@@ -1,0 +1,249 @@
+body{
+  background: url("../imgs/marble-pattern.png");
+  background: url("../imgs/playstation-pattern.png");
+    background: url("../imgs/circles-light.png");
+  /*background: #1b1c1d;*/
+  padding-top: 50px;
+    overflow-y:scroll;
+}
+.cursor{
+  -webkit-animation: blinking 1s infinite; /* Safari 4.0 - 8.0 */
+animation: blinking 1s infinite;
+}
+
+.topbar{
+  position:fixed;
+  width:100%;
+  height:200px;
+  background:#1b1c1d;
+  top:0;
+  left:0;
+
+}
+.topbarbutton {
+padding: 5px 20px;
+width: 50px;
+border-radius:0px!important;
+margin:0!important;
+  position:fixed;
+}
+.double-height-button{
+  height:80px;
+}
+.double-width-button{
+width:120px;
+padding:0px;
+}
+.rotate > span{
+  display:block;
+	transform: rotate(-90deg);
+  transform-origin: 24px 28px;
+}
+.topbarbutton .hidden{
+  opacity:0!important;
+}
+.topbarbutton:hover i, .topbarbutton:hover span {
+  opacity:1!important;
+
+}
+.topbarbutton i,.topbarbutton span{
+  font-size:20px!important;
+  position:relative;
+  top:5px;
+  transition: all 0.3s ease !important;
+}
+}
+.topbarbutton:hover i,.topbarbutton:hover span{
+  font-size:25px!important;
+}
+.minimizeWindow{
+  top:0;
+  left:0;
+}
+.maximizeWindow{
+  top:0;
+  left:50px;
+}
+.closeWindow{
+  top: 0;
+  right: 0;
+}
+.cloudMenu{
+  top:0px;
+  left:100px;
+}
+.mailMenu{
+  top:0px;
+  left:220px;
+}
+.printMenu{
+  top:0px;
+  left:340px;
+}
+.insertMenu{
+  top:0px;
+  left:460px;
+}
+.quoteMenu i{
+  position:relative;
+  top : -20px;
+  font-size: 13px!important;
+}
+.quoteMenu{
+  top: 0px;
+  left: 580px;
+  font-size: 34px !important;
+  padding: 20px 0px !important;
+  font-family: "Times New Roman" !important;
+}
+.newMenu{
+  top: 10px;
+  left: 700px;
+  width:200px!important;
+  font-size: 15px !important;
+  font-family: "Times New Roman" !important;
+}
+.zoomMenu{
+  position:fixed!important;
+  top:0;
+  right:50px;
+}
+.languageMenu i{
+font-size:30px!important;
+}
+.languageMenu img{
+  width:35px;
+  height:20px;
+  position:relative;
+  top:8px;
+  right:3px;
+  margin:5px;
+}
+.languageMenu{
+  position:fixed!important;
+  left:10px;
+  top:130px;
+  width:150px!important;
+}
+.handoffMenu{
+  top:40px;
+  left:100px;
+  padding:10px 5px!important;
+
+}
+.wordCount{
+  top:100px;
+  right:50px;
+}
+.saveDocument{
+  top: 40px;
+  left: 25px;
+  font-size: 20px!important;
+  border-radius: 10px;
+  padding-left: 20px!important;
+}
+.saved{
+  text-shadow: 0px 0px 5px red!important;
+}
+.menu-button{
+  position:fixed;
+  left: 10px;
+  top: 350px;
+  visibility:hidden;
+}
+#editor{
+  padding:80px 50px;
+  position:fixed;
+  top:100px;
+  width:70%;
+  left:15%;
+  background: white;
+  height:inherit;
+  min-height:120000px;
+
+  border: 1px solid #adabab;
+    border-radius: 4px;
+}
+#suggestions-wrapper{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:200px;
+  background:#222;
+  padding:20px;
+  color:white;
+}
+.findandreplace{
+  position:fixed;
+  bottom:2px;
+  right:0px;
+  z-index:100;
+  width:200px;
+}
+.findandreplace i{
+  color: white;
+position: fixed;
+bottom: 25px;
+right: 200px;
+font-size: 25px;
+}
+.find input, .replace input{
+  width:100%;
+  padding:10px;
+  background-color:#222!important;
+  border:none;
+  border-radius:10px;
+}
+.add_sugestion{
+  color:white;
+  opacity:1;
+}
+.ql-toolbar{
+    -webkit-app-region: drag;
+  background:#222;
+  position:fixed;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:80px;
+  z-index:98
+}
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+    border-color: #222;
+    background: #222;}
+
+.ql-snow .ql-stroke{
+  stroke:white;
+}
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: white;
+}
+.ql-snow .ql-picker {
+    color: white;
+  }
+@keyframes blinking {
+    0%   {opacity: 0;}
+    25%  {opacity: 0.5;}
+    50%  {opacity: 1;}
+    75%  {opacity: 0.5;}
+    100% {opacity: 0;}
+}
+
+
+
+
+
+.range-slider .input-range {
+    position:fixed;
+    top:10px;
+    right:10px;;
+    -webkit-appearance: none;
+    height: 60px;
+    border-radius: 5px;
+    background: #ccc;
+    outline: none;
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+
+  }

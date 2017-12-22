@@ -2,71 +2,102 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <title>Text Editor - Law </title>
 
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   </head>
   <body>
-    <div class="ui one column relaxed grid container">
-      <div class="ui row">
-        <div class="ui eight wide column">
-          <span><h1>Text Editor cool stuff</h1></span>
+    <body>
 
-        </div>
-        <div class="ui eight wide column">
-            <button class="ui button blue">Doing Lawyer stuff</button>
-        </div>
-      </div>
-      <div class="ui row">
-        <div class="ui sixteen wide column form">
-          <div class="field">
-            <label for="">Text</label>
-            <textarea></textarea>
+  <div class="ui left vertical inverted sidebar labeled icon menu">
+    <a class="active item">
+      Tool
+    </a>
+    <a class="item">
+      Change Area of expertise
+    </a>
+  </div>
+  <div class="ui right vertical inverted sidebar labeled icon menu">
+    <a class="active item">
+      Tool
+    </a>
+    <a class="item">
+      Change Area of expertise
+    </a>
+  </div>
+  <div class="pusher">
+        <div class="topbar">
+          <div class="ui button blue minimizeWindow topbarbutton"><i class="window minimize icon hidden"></i></div>
+          <div class="ui button green maximizeWindow topbarbutton"><i class="window maximize icon hidden"></i></div>
+
+          <div class="ui button red closeWindow topbarbutton double-height-button rotate"><span class="hidden">Close</span></div>
+          <div class="ui button black saveDocument topbarbutton">T</div>
+          <div class="ui button black cloudMenu topbarbutton double-width-button"><i class="cloud icon"></i></div>
+          <div class="ui button black mailMenu topbarbutton double-width-button"><i class="mail icon"></i></div>
+          <div class="ui button black printMenu topbarbutton double-width-button"><i class="print icon"></i></div>
+          <div class="ui button black insertMenu topbarbutton double-width-button"><i class="plus icon"></i></div>
+          <div class="ui input black newMenu topbarbutton double-width-button"><input type="text" placeholder="Doc Type"></div>
+          <div class="ui button black handoffMenu topbarbutton double-width-button"><i class="users icon"></i> HANDOFF</div>
+            <div class="ui button black wordCount topbarbutton double-width-button"> Wordcount: 150 <i class="file text outline icon"></i> Pages 1/2</div>
+          <div class="ui input black zoomMenu topbarbutton double-height-button">
+            <div class="range-slider"><input class="input-range" orient="vertical" type="range" step="0.5" value="5" min="1" max="10"><span class="range-value"></span></div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-          <div class="ui sixteen  wide column">
-        <h2>Suggested Words</h2>
-      </div>
-      </div>
-      <div class="ui row">
-        <div class="ui sixteen  wide column">
-          <div class="ui red label">
-            <i class="lightbulb icon"></i>
-            Adrienne
-            <i class="delete icon"></i>
+          <div class="ui button black languageMenu topbarbutton double-width-button"><i class="world icon"></i>
+            <img src="assets/imgs/flag-peru.png" alt="">
           </div>
-          <div class="ui green label">
-           <i class="question white icon"></i>
-            Nan
-            <i class="delete icon"></i>
-          </div>
-          <div class="ui green label">
-           <i class="question white icon"></i>
-            Nan
-            <i class="delete icon"></i>
-          </div>
-          <div class="ui yellow label">
-            <i class="lightbulb icon"></i>
-            Zoe
-            <i class="delete icon"></i>
-          </div>
-          <div class="ui green label">
-           <i class="question white icon"></i>
-            Nan
-            <i class="delete icon"></i>
-          </div>
-        </div>
-      </div>
+
 
 </div>
+          <!--div class="ui button black quoteMenu topbarbutton double-height-button double-width-button huge"><i class="quote left tiny icon"></i>Q<i class="quote tiny right icon"></i></div-->
+        </div>
+        <div class="ui findandreplace black">
+          <i id="translate_toggle" class="world icon"></i>
+          <div class="find"><input type="text" placeholder="Find..."></div>
+          <div class="replace"><input type="text" placeholder="Replace..."></div>
+        </div>
+        <h2 class="ui sub header icon menu-button" id="openSidebar">
+            <i class="home icon"></i>
+            <div class="content">
+              Menu
+            </div>
+          </h2>
+          <div id="editor">
+            <h1>Hola, Bienvenido al Proyecto Vacancia</h1>
+            <br>
+            <br>
+            <br>
+            <h2>To do</h2>
+            <p></p>
+            <br>
+            <ul>
+              <li>  poner en los iconos de arriba que cambien como un rolledex</li>
+            </ul>
+          </div>
+      <!--div class="row" id="suggestions-wrapper">
+          <div class="ui sixteen  wide column ">
+        <h2>Suggested Words</h2>
+          <div class="ui sixteen  wide column" id="suggestions">
+      </div>
+        </div>
+      </div-->
+
+    </div>
+    <script>
+      var $ = jQuery = require("jquery")
+    </script>
 <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
 
 <script src="semantic/dist/semantic.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+<script src="assets/js/expansions.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
 
+</script>
   </body>
 </html>
