@@ -1,6 +1,5 @@
-
-export default {
-  return [
+var exports = module.exports = {};
+  exports.expansions = [
     {
     "trigger": "idk",
     "expansion": "I don't know"
@@ -26,4 +25,3 @@ export default {
   "expansion": "6x10^23"
   }
     ]
-}

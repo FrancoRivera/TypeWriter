@@ -1,6 +1,7 @@
 var quill, suggestions;
-
-
+var yolo = require("./assets/js/expansions.js")
+const remote = require('electron').remote;
+var expansions = yolo.expansions
 function textExpand(word){
   for (var i = 0; i < expansions.length; i++) {
     if(word == expansions[i].trigger) return expansions[i].expansion
@@ -36,6 +37,7 @@ $(function() {
   quill.setSelection(quill.getLength())
   quill.focus()
   $("#editor").click(function(){
+
 
   })
     $("#editor").click()
@@ -86,7 +88,21 @@ $(function() {
   $("#openSidebar").click(() => {
   $('.ui.sidebar').sidebar('toggle')
 });
+$(".closeWindow").click(()=>{
+    remote.getCurrentWindow().close()
+})
+$(".minimizeWindow").click(()=>{
+    remote.getCurrentWindow().minimize()
+})
+$(".maximizeWindow").click(()=>{
+  if (remote.getCurrentWindow().isMaximized()){
+    remote.getCurrentWindow().unmaximize()
+  }
+  else{
+    remote.getCurrentWindow().maximize()
+  }
 
+})
 $(".saveDocument").click(function(){
   $(this).addClass("saved")
 })

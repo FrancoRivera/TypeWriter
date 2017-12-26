@@ -18,6 +18,7 @@ animation: blinking 1s infinite;
   background:#1b1c1d;
   top:0;
   left:0;
+      -webkit-app-region: drag;
 
 }
 .topbarbutton {
@@ -39,23 +40,23 @@ padding:0px;
 	transform: rotate(-90deg);
   transform-origin: 24px 28px;
 }
+.topbarbutton label{
+  opacity:0!important;
+}
 .topbarbutton .hidden{
   opacity:0!important;
 }
 .topbarbutton:hover i, .topbarbutton:hover span {
   opacity:1!important;
-
 }
 .topbarbutton i,.topbarbutton span{
   font-size:20px!important;
   position:relative;
   top:5px;
+  margin:0!important;
   transition: all 0.3s ease !important;
 }
-}
-.topbarbutton:hover i,.topbarbutton:hover span{
-  font-size:25px!important;
-}
+
 .minimizeWindow{
   top:0;
   left:0;
@@ -152,11 +153,13 @@ font-size:30px!important;
   visibility:hidden;
 }
 #editor{
+   -webkit-app-region: no-drag;
+  left: 50%;
+  margin-left: calc(-891px/2);
   padding:80px 50px;
   position:fixed;
   top:100px;
-  width:70%;
-  left:15%;
+  width:891px;
   background: white;
   height:inherit;
   min-height:120000px;
@@ -229,15 +232,17 @@ font-size: 25px;
     75%  {opacity: 0.5;}
     100% {opacity: 0;}
 }
-
-
-
-
+@keyframes popup-icon {
+    0%   {font-size: 20px;}
+    50%  {font-size: 30px;}
+    100% {font-size: 20px;}
+}
 
 .range-slider .input-range {
     position:fixed;
     top:10px;
-    right:10px;;
+    right:50px;
+    width:50px;
     -webkit-appearance: none;
     height: 60px;
     border-radius: 5px;
