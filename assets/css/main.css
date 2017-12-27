@@ -14,12 +14,22 @@ animation: blinking 1s infinite;
 .topbar{
   position:fixed;
   width:100%;
-  height:200px;
+  height:100px;
   background:#1b1c1d;
   top:0;
   left:0;
+  z-index:20;
       -webkit-app-region: drag;
-
+}
+.topbarBehind{
+  position:fixed;
+  width:100%;
+  height:100px;
+  background:#1b1c1d;
+  top:100px;
+  left:0;
+  z-index:10;
+      -webkit-app-region: drag;
 }
 .topbarbutton {
 padding: 5px 20px;
@@ -27,6 +37,7 @@ width: 50px;
 border-radius:0px!important;
 margin:0!important;
   position:fixed;
+  z-index:25
 }
 .double-height-button{
   height:80px;
@@ -40,22 +51,49 @@ padding:0px;
 	transform: rotate(-90deg);
   transform-origin: 24px 28px;
 }
-.topbarbutton label{
-  opacity:0!important;
-}
-.topbarbutton .hidden{
-  opacity:0!important;
-}
-.topbarbutton:hover i, .topbarbutton:hover span {
-  opacity:1!important;
-}
-.topbarbutton i,.topbarbutton span{
+.topbarbutton i,.topbarbutton span, .topbarbutton label{
   font-size:20px!important;
   position:relative;
   top:5px;
+  left:20px;
   margin:0!important;
   transition: all 0.3s ease !important;
 }
+.topbarbutton label{
+  opacity:0!important;
+  visibility: hidden;
+  position: relative;
+  top: 40px;
+  left:-20px;
+}
+.topbarbutton .hidden{
+  opacity:0!important;
+  top:10px;
+  left:-5px;
+}
+.topbarbutton:hover i, .topbarbutton:hover span {
+  opacity: 0!important;
+  visibility: hidden;
+  position: relative;
+  top: -20px;
+}
+.topbarbutton:hover .hidden{
+  opacity:1!important;
+  font-size:20px!important;
+  position:relative;
+  visibility: visible;
+  top:0px;
+  left:-5px;
+  margin:0!important;
+  transition: all 0.3s ease !important;
+}
+.topbarbutton:hover label{
+  visibility: visible;
+  top: 0px;
+  opacity: 1!important;
+  left:-20px;
+}
+
 
 .minimizeWindow{
   top:0;
@@ -108,9 +146,11 @@ padding:0px;
   position:fixed!important;
   top:0;
   right:50px;
+  -webkit-app-region: no-drag;
 }
 .languageMenu i{
 font-size:30px!important;
+left: 0;
 }
 .languageMenu img{
   width:35px;
@@ -120,10 +160,16 @@ font-size:30px!important;
   right:3px;
   margin:5px;
 }
+.languageMenu label{
+  left: 0px;
+}
+.languageMenu:hover label{
+  left: 0px;
+}
 .languageMenu{
   position:fixed!important;
   left:10px;
-  top:130px;
+  top:100px;
   width:150px!important;
 }
 .handoffMenu{
@@ -153,17 +199,17 @@ font-size:30px!important;
   visibility:hidden;
 }
 #editor{
+  z-index:15;
    -webkit-app-region: no-drag;
   left: 50%;
   margin-left: calc(-891px/2);
   padding:80px 50px;
-  position:fixed;
   top:100px;
   width:891px;
   background: white;
   height:inherit;
-  min-height:120000px;
-
+  min-height:1260px;
+  margin-bottom:200px;
   border: 1px solid #adabab;
     border-radius: 4px;
 }
@@ -177,26 +223,61 @@ font-size:30px!important;
   padding:20px;
   color:white;
 }
-.findandreplace{
+.mostUsedWords p{
+  padding-top:10px;
+  border-top: 1px solid grey;
+}
+.mostUsedWords{
   position:fixed;
-  bottom:2px;
+  right:0;
+  width:200px;
+  top:220px;
+  background-color:#1b1c1d;
+  background-color:white;
+  background:none;
+  border:5px #2870db solid;
+  color:black;
+  padding:20px;
+  border-right:none;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.findandreplace{
+  border-left:5px solid #CCC;
+  position:fixed;
+  margin-left:2px;
+  bottom:0px;
+  height:79px;
   right:0px;
   z-index:100;
   width:200px;
+  margin-top:-5px;
 }
 .findandreplace i{
   color: white;
 position: fixed;
 bottom: 25px;
-right: 200px;
+right: 220px;
 font-size: 25px;
 }
+.find input:focus, .replace input:focus{
+  outline: none;
+}
 .find input, .replace input{
+  color:white!important;
   width:100%;
   padding:10px;
   background-color:#222!important;
+  background-color:inherit!important;
   border:none;
   border-radius:10px;
+}
+.find input::placeholder,.replace input::placeholder{
+  color:white;
 }
 .add_sugestion{
   color:white;
@@ -205,6 +286,7 @@ font-size: 25px;
 .ql-toolbar{
     -webkit-app-region: drag;
   background:#222;
+  background:#2870db;
   position:fixed;
   left:0;
   bottom:0;
@@ -214,8 +296,53 @@ font-size: 25px;
 }
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
     border-color: #222;
-    background: #222;}
-
+    background: #222;
+  }
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    height: 50px;
+    padding: 3px 5px;
+    width: 50px;
+    padding:10px;
+}
+.ql-font.ql-picker{
+  font-size: 29px;
+width: 200px;
+position: relative;
+top: 5px;
+width:200px!important;
+}
+.ql-size.ql-active::after{
+    border:1px solid white;
+    padding:10px;
+}
+.ql-size{
+  width:70px!important;
+}
+.ql-size[value=small]::after{
+  content: "Small";
+    color: white;
+  font-size:10px;
+}
+.ql-size[value=false]::after{
+  content: "Normal";
+    color: white;
+  font-size:14px;
+}
+.ql-size[value=large]::after{
+  content: "Large";
+    color: white;
+        font-size:18px;
+}
+.ql-size[value=huge]::after{
+  content: "Huge";
+    color: white;
+        font-size:22px;
+}
 .ql-snow .ql-stroke{
   stroke:white;
 }

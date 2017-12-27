@@ -1,0 +1,138 @@
+<html>
+  <head>
+
+  </head>
+
+  <body>
+    <h2>Print to PDF Settings</h2>
+    <div>
+      <p style="display:inline-block;width:100px;margin-right:10px;">Layout</p>
+      <select id="layout-settings">
+        <option selected="">Portrait</option>
+        <option >Landscape</option>
+      </select>
+    </div>
+
+    <div>
+      <p style="display:inline-block;width:100px;margin-right:10px;">Page size</p>
+      <select id="page-size-settings">
+          <option>A4</option>
+          <option>A3</option>
+          <option>Letter</option>
+          <option>Legal</option>
+          <option>Tabloid</option>
+       </select>
+    </div>
+
+    <div>
+      <p style="display:inline-block;width:100px;margin-right:10px;">Margins</p>
+      <select id="margin-settings">
+        <option value="0" selected="">Default</option>
+        <option value="1">None</option>
+        <option value="2">Minimum</option>
+      </select>
+    </div>
+
+    <div>
+      <div>
+        <p style="display:inline-block;width:100px;margin-right:10px;">Margins</p>
+        <div style="display:inline-block">
+        <input id="print-background" type="checkbox">
+        <span i18n-content="optionBackgroundColorsAndImages">Background graphics</span>
+      </div>
+      <div style="padding-left:115px">
+        <input id="print-selection" type="checkbox">
+        <span i18n-content="optionBackgroundColorsAndImages">Selection only</span>
+      </div>
+    </div>
+
+    <div style="margin-top:15px">
+      <button id="print_button">Print</button>
+      <button id="save_pdf_button">Save as PDF</button>
+      <button id="view_pdf_button">View PDF</button>
+    </div>
+
+    <div id="output-log">
+    </div>
+    <script>
+    const remote = require('electron').remote;
+    const {BrowserWindow, dialog, shell} = remote;
+    const fs = require('fs');
+
+    let print_win = BrowserWindow;
+    let save_pdf_path;
+
+    function getPDFPrintSettings() {
+      var option = {
+        landscape: false,
+        marginsType: 0,
+        printBackground: false,
+        printSelectionOnly: false,
+        pageSize: 'A4',
+      };
+
+      var layoutSetting = document.getElementById("layout-settings");
+      option.landscape =
+        layoutSetting.options[layoutSetting.selectedIndex].value == 'Landscape';
+      var pageSizeSetting = document.getElementById("page-size-settings");
+      option.pageSize =
+        pageSizeSetting.options[pageSizeSetting.selectedIndex].text;
+      var marginsSetting = document.getElementById("margin-settings");
+      option.marginsType =
+        parseInt(marginsSetting.options[marginsSetting.selectedIndex].value);
+
+      option.printBackground = document.getElementById("print-background").checked;
+      option.printSelectionOnly = document.getElementById(
+        "print-selection").checked;
+      return option;
+    }
+
+    function print() {
+      if (print_win)
+        print_win.webContents.print();
+    }
+
+    function savePDF() {
+      if (!print_win) {
+        dialog.showErrorBox('Error', "The printing window isn't created");
+        return;
+      }
+      dialog.showSaveDialog(print_win, {}, function(file_path) {
+        if (file_path) {
+          print_win.webContents.printToPDF(getPDFPrintSettings(), function(err, data) {
+            if (err) {
+              dialog.showErrorBox('Error', err);
+              return;
+            }
+            fs.writeFile(file_path, data, function(err) {
+              if (err) {
+                dialog.showErrorBox('Error', err);
+                return;
+              }
+              save_pdf_path = file_path;
+              document.getElementById('output-log').innerHTML =
+                "<p> Write PDF file: " + save_pdf_path + " successfully!</p>";
+            });
+          });
+        }
+      });
+    }
+
+    function viewPDF() {
+      if (!save_pdf_path) {
+        dialog.showErrorBox('Error', "You should save the pdf before viewing it");
+        return;
+      }
+      shell.openItem(save_pdf_path);
+    }
+      document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('print_button').addEventListener('click', print);
+      document.getElementById('save_pdf_button').addEventListener(
+        'click', savePDF);
+      document.getElementById('view_pdf_button').addEventListener(
+        'click', viewPDF);
+    });
+
+    </script>
+  </body>
+</html>
