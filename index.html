@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
     <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   </head>
   <body>
@@ -43,8 +44,8 @@
           <div class="ui input black newMenu topbarbutton double-width-button"><input type="text" placeholder="Doc Type"></div>
           <div class="ui button black handoffMenu topbarbutton double-width-button"><i class="users icon"></i> <label for="">Handoff</label></div>
           <div class="ui button black wordCount topbarbutton double-width-button"><i class="file text outline icon"></i><label for="">WordCount</label> <span id="wordCount"></span></div>
-          <div class="ui input black zoomMenu topbarbutton double-height-button">
-            <div class="range-slider"><input class="input-range" orient="vertical" type="range" step="0.5" value="5" min="1" max="10"><span class="range-value"></span></div>
+          <div class="ui input black zoomMenu double-height-button">
+            <div class="range-slider"><div id="slider-vertical"></div></div>
           </div>
           <div class="ui button black languageMenu topbarbutton double-width-button"><i class="world icon"></i><label for="#">Language</label>
             <img src="assets/imgs/flag-peru.png" alt="">
@@ -55,8 +56,8 @@
           </div>
           <!--div class="ui button black quoteMenu topbarbutton double-height-button double-width-button huge"><i class="quote left tiny icon"></i>Q<i class="quote tiny right icon"></i></div-->
         </div>
-        <div class="ui findandreplace black">
-          <i id="translate_toggle" class="world icon"></i>
+        <div class="ui findandreplace">
+          <i id="translate_toggle" class="blue world icon"></i>
           <div class="find"><input type="text" placeholder="Find..."></div>
           <div class="replace"><input type="text" placeholder="Replace..."></div>
         </div>
@@ -82,6 +83,7 @@
       Abraham Lincoln
       November 19, 1863</p>
           </div>
+          <div class="mostUsedWordsToggle toggle "></div>
           <div class="mostUsedWords">
             <h3>Most used Words</h3>
             <ul>
@@ -104,6 +106,7 @@
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="semantic/dist/semantic.min.js"></script>
 <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>

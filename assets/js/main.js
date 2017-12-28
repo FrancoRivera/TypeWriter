@@ -6,6 +6,11 @@ var dictionary = new Typo("en_US");
 const remote = require('electron').remote;
 const {BrowserWindow, dialog, shell} = remote;
 var expansions = yolo.expansions
+/* disables zoom */
+var webFrame = require('electron').webFrame
+webFrame.setVisualZoomLevelLimits(1, 1)
+webFrame.setLayoutZoomLevelLimits(0, 0)
+
 function textExpand(word){
   for (var i = 0; i < expansions.length; i++) {
     if(word == expansions[i].trigger) return expansions[i].expansion
@@ -131,6 +136,7 @@ $(function() {
       }
     }
     WordCount();
+
     }
 
   )
@@ -174,6 +180,50 @@ $("#translate_toggle").click(function(){
   }
 
 
+})
+
+function zoomFunction(){
+
+}
+$( function() {
+    $( "#slider-vertical" ).slider({
+      orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 100,
+      value: 0,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( ui.value );
+        var ratio = $( "#slider-vertical" ).slider( "value" );
+        ratio = 1 + ratio/100;
+        base_width = 890;
+        base_height = 1260;
+        $("#editor").css("width", base_width*ratio).css("margin-left", (-base_width*ratio)/2).css("font-size", 14*ratio)
+        $("#editor").css("height", base_height*ratio)
+      }
+    });
+
+  } );
+var showMostUsedWords= false;
+
+$(".mostUsedWordsToggle").click(function(){
+  if(showMostUsedWords){
+    $(".mostUsedWords").css("right", "-200px");
+    $(this).css("right", "-10px");
+    $(".findandreplace").css("right", "-200px");
+    $(".findandreplace i").css("right", "0px").css("bottom", "40px");
+  $(".ql-toolbar").css("bottom", "0px");
+    showMostUsedWords = false;
+  }
+  else{
+    $(".mostUsedWords").css("right", "0px");
+    $(this).css("right", "190px");
+    $(".findandreplace").css("right", "0px")
+    $(".findandreplace i").css("right", "220px").css("bottom", "25px");
+      $(".ql-toolbar").css("bottom", "-40px");
+
+    showMostUsedWords= true;
+  }
 })
 /*
 document.addEventListener('DOMContentLoaded', function() {

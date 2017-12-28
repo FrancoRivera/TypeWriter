@@ -29,7 +29,7 @@ animation: blinking 1s infinite;
   top:100px;
   left:0;
   z-index:10;
-      -webkit-app-region: drag;
+      -webkit-app-region: no-drag;
 }
 .topbarbutton {
 padding: 5px 20px;
@@ -143,10 +143,13 @@ padding:0px;
   font-family: "Times New Roman" !important;
 }
 .zoomMenu{
+  -webkit-app-region: no-drag;
   position:fixed!important;
   top:0;
   right:50px;
-  -webkit-app-region: no-drag;
+}
+#slider-vertical{
+  height:80px;
 }
 .languageMenu i{
 font-size:30px!important;
@@ -211,7 +214,7 @@ left: 0;
   min-height:1260px;
   margin-bottom:200px;
   border: 1px solid #adabab;
-    border-radius: 4px;
+  border-radius: 4px;
 }
 #suggestions-wrapper{
   position:fixed;
@@ -227,9 +230,10 @@ left: 0;
   padding-top:10px;
   border-top: 1px solid grey;
 }
+
 .mostUsedWords{
   position:fixed;
-  right:0;
+  right:-200px;
   width:200px;
   top:200px;
   background-color:#1b1c1d;
@@ -238,6 +242,18 @@ left: 0;
   border-left:5px #2870db solid;
   color:black;
   padding:20px;
+    transition: all 0.5s ease-in;
+}
+.mostUsedWordsToggle{
+  position:fixed;
+  top:450px;
+  right:190px;
+  right:0px;
+  width:30px;
+  z-index:20;
+  height:50px;
+  background-color:#222;
+  transition: all 0.5s ease-in;
 }
 .findandreplace{
   border-left:5px solid #CCC;
@@ -245,16 +261,19 @@ left: 0;
   margin-left:2px;
   bottom:0px;
   height:79px;
-  right:0px;
+  right:-200px;
   z-index:100;
   width:200px;
   margin-top:-5px;
+    transition: all 0.5s ease-in;
+    background:#2870db;
 }
 .findandreplace i{
+    transition: all 0.5s ease-in;
   color: white;
 position: fixed;
-bottom: 25px;
-right: 220px;
+bottom: 40px;
+right:0px;
 font-size: 25px;
 }
 .find input:focus, .replace input:focus{
@@ -284,8 +303,9 @@ font-size: 25px;
   left:0;
   bottom:0;
   width:100%;
-  height:80px;
-  z-index:98
+  height:40px;
+  z-index:98;
+  transition: all 0.5s ease-in;
 }
 .ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
     border-color: #222;
@@ -297,16 +317,16 @@ font-size: 25px;
     cursor: pointer;
     display: inline-block;
     float: left;
-    height: 50px;
+    height: 40px;
     padding: 3px 5px;
     width: 50px;
-    padding:10px;
+    position: relative;
+    top: -7px;
 }
 .ql-font.ql-picker{
-  font-size: 29px;
-width: 200px;
+  font-size: 20px;
 position: relative;
-top: 5px;
+top: -5px;
 width:200px!important;
 }
 .ql-size.ql-active::after{
