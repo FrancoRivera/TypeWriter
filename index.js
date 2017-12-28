@@ -8,10 +8,10 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 1100, height: 750, minWidth:1100, minHeight:750, frame: false, resizable:true})
+  win = new BrowserWindow({width: 750, height: 600, minWidth:750, minHeight:600, frame: false, resizable:true})
   // and load the index.html of the app.
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'startWindow.html'),
     protocol: 'file:',
     slashes: true
   }))

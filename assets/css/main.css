@@ -29,7 +29,7 @@ animation: blinking 1s infinite;
   top:100px;
   left:0;
   z-index:10;
-      -webkit-app-region: no-drag;
+  -webkit-app-region: no-drag;
 }
 .topbarbutton {
 padding: 5px 20px;
