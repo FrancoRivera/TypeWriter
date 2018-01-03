@@ -1,7 +1,7 @@
 body{
   background: url("../imgs/marble-pattern.png");
   background: url("../imgs/playstation-pattern.png");
-    background: url("../imgs/circles-light.png");
+  background: url("../imgs/circles-light.png");
   /*background: #1b1c1d;*/
   padding-top: 50px;
     overflow-y:scroll;
